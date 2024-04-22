@@ -12,23 +12,40 @@ let sum = firstCard + secondCard
 let hasBlackJack = false
 let isAlive = true
 
+let messageEl = document.getElementById("message-el")
+let cardEl = document.getElementById("card-el")
+//let sumEl = document.getElementById("sum-el")
+let sumEl = document.querySelector("#sum-el") //this version is more dynamic so needs #id specifier
+
 let message = "Let's play!"
-console.log(message)
+//console.log(message)
 
 //If sum <21 :)
 //If sum == 21 :D
 //If sum > 21 :( lose
 
-if (sum <= 20) {
-	message = "Want a new card?"
+
+
+
+function drawCard(){
+	firstCard = Math.floor(Math.random() * 10)+2
+	secondCard = Math.floor(Math.random() * 10)+2
+	sum = firstCard + secondCard
 	
-} else if (sum === 21){
-	message = "Wow! Blackjack!"
-	hasBlackJack = true
-} else{
-	message = "You're out of the game!"
-	isAlive = false
-}
+	if (sum <= 20) {
+	message = "Want a new card?"
+		
+	} else if (sum === 21){
+		message = "Wow! Blackjack!"
+		hasBlackJack = true
+	} else{
+		message = "You're out of the game!"
+		isAlive = false
+	}
 
-console.log(message)
-
+	messageEl.textContent = message
+	cardEl.textContent = "Cards: " + firstCard + " " + secondCard
+	sumEl.textContent = "Sum: " + sum
+	
+	//console.log(message)
+	}
